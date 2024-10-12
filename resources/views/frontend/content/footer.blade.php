@@ -5,7 +5,7 @@
                 <div class="footer-box">
                     <a href="/">
                         @if (@$footer->logo == NULL)
-                            <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo-footer.png')}}" alt="logo">
+                            <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo-footer-tp2s.png')}}" alt="logo">
                         @else
                             <img class="img-responsive" src="{{asset('storage/images/logo/' .$footer->logo)}}" alt="logo">
                         @endif
@@ -61,6 +61,13 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
+                <p>
+                    Dokumen ini disusun atas dukungan Global Financing Facility – World Bank melalui Sekretariat Wakil Presiden Republik Indonesia untuk pelaksanaan Program Investing in Nutrition Early Years (INEY). Isi dari dokumen ini sepenuhnya menjadi tanggung jawab TP2S dan tidak selalu mencerminkan pandangan Global Financing Facility – World Bank dan Pemerintah Indonesia.
+                </p>
+            </div>  
+        </div> 
     </div>
 </div>
 <div class="footer-area-bottom">

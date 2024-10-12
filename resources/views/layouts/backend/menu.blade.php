@@ -47,11 +47,11 @@
                     <span class="menu-title text-truncate" data-i18n="Data Sekolah">Data</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="nav-item {{ (request()->is('program-studi')) ? 'active' : '' }}">
+                    {{-- <li class="nav-item {{ (request()->is('program-studi')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('program-studi.index')}} "><i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Stakeholder</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item {{ (request()->is('backend-kegiatan')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-kegiatan.index')}} "><i data-feather="circle"></i>
@@ -61,7 +61,7 @@
                     <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">Tentang</span></a>
                         <ul class="menu-content">
                             <li class="nav-item {{ (request()->is('backend-profile-sekolah')) ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{{route('backend-profile-sekolah.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">Profile Sekolah</span></a>
+                                <a class="d-flex align-items-center" href="{{route('backend-profile-sekolah.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">Profile TP2S</span></a>
                             </li>
                             <li class="nav-item {{ (request()->is('backend-visimisi')) ? 'active' : '' }}">
                                 <a class="d-flex align-items-center" href="{{route('backend-visimisi.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">Visi dan Misi</span></a>

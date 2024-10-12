@@ -5,7 +5,7 @@
                 <div class="footer-box">
                     <a href="/">
                         @if (@$footer->logo == NULL)
-                            <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo-footer.png')}}" alt="logo">
+                            <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo-footer-tp2s.png')}}" alt="logo">
                         @else
                             <img class="img-responsive" src="{{asset('storage/images/logo/' .$footer->logo)}}" alt="logo">
                         @endif

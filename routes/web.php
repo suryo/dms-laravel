@@ -23,8 +23,11 @@ Route::get('/','Frontend\IndexController@index');
         Route::get('profile-sekolah',[App\Http\Controllers\Frontend\IndexController::class,'profileSekolah'])->name('profile.sekolah');
 
         //// VISI dan MISI
-        Route::get('visi-dan-misi',[App\Http\Controllers\Frontend\IndexController::class,'visimisi'])->name('visimisi.sekolah');
-
+        // Route::get('visi-dan-misi',[App\Http\Controllers\Frontend\IndexController::class,'visimisi'])->name('visimisi.sekolah');
+        Route::get('pilar-program', function () {
+            return view('frontend.content.pilarprogram');
+        })->name('pilar_program');
+        
         //// PROGRAM STUDI \\\\
         Route::get('program/{slug}', [App\Http\Controllers\Frontend\MenuController::class, 'programStudi']);
         //// PROGRAM STUDI \\\\

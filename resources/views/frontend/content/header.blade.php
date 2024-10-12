@@ -6,7 +6,7 @@
                     <div class="header-top-left">
                         <div class="logo-area">
                             @if (@$footer->logo == NULL)
-                            <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo-footer.png')}}" alt="logo">
+                            <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo-footer.png')}}" alt="logo" width="50%" height="auto">
                         @else
                             <img class="img-responsive" src="{{asset('storage/images/logo/' .$footer->logo)}}" alt="logo">
                         @endif
@@ -40,12 +40,14 @@
                             <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">Beranda</a></li>
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
-                                    <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
-                                    <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
+                                    <li><a href=" {{route('profile.sekolah')}} ">Profile TP2S</a></li>
+                                    {{-- <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li> --}}
+                                    <li><a href=" {{route('pilar_program')}} ">Pilar Program</a></li>
+                                 
                                 </ul>
                             </li>
 
-                            <li><a href="#">Program</a>
+                            {{-- <li><a href="#">Program</a>
                                 <ul>
                                     <li class="has-child-menu"><a href="#">Program Studi</a>
                                         <ul class="thired-level">
@@ -62,9 +64,9 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
+                            {{-- <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li> --}}
 
                             <li><a href="#">Lainnya</a>
                                 <ul>
@@ -90,12 +92,13 @@
                             <li class="active"><a href="#">Beranda</a></li>
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
-                                    <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
-                                    <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
+                                    <li><a href=" {{route('profile.sekolah')}} ">Profile TP2S</a></li>
+                                    {{-- <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li> --}}
+                                       <li><a href=" {{route('pilar_program')}} ">Pilar Program</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="#">Program</a>
+                            {{-- <li><a href="#">Program</a>
                                 <ul>
                                     <li class="has-child-menu"><a href="#">Program Studi</a>
                                         <ul class="thired-level">
@@ -112,9 +115,9 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
+                            {{-- <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li> --}}
 
                             <li><a href="#">Lainnya</a>
                                 <ul>

@@ -41,7 +41,7 @@
         <!-- Video Area End Here -->
 
         <!-- Lecturers Area Start Here -->
-            @yield('guru')
+            {{-- @yield('guru') --}}
         <!-- Lecturers Area End Here -->
 
         <!-- News and Event Area Start Here -->
