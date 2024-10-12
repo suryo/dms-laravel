@@ -1,4 +1,4 @@
-<div class="about1-area">
+<!-- <div class="about1-area">
     @if ($about != NULL)
         <div class="container">
             <h1 class="about-title wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">{{$about->title}}</h1>
@@ -8,4 +8,4 @@
             </div>
         </div>
     @endif
-</div>
+</div> -->

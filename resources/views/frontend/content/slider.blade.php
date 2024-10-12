@@ -11,9 +11,9 @@
                 <div class="title-container s-tb-c">
                     <div class="title1">{{$sliders->title}}</div>
                     <p> {{$sliders->desc}} </p>
-                    <div class="slider-btn-area">
+                    <!-- <div class="slider-btn-area">
                         <a href="{{url('ppdb')}}" class="default-big-btn">Daftar !</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

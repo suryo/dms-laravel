@@ -44,14 +44,15 @@
             @if (Auth::user()->role == 'Admin')
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="database"></i>
-                    <span class="menu-title text-truncate" data-i18n="Data Sekolah">Data Sekolah</span>
+                    <span class="menu-title text-truncate" data-i18n="Data Sekolah">Data</span>
                 </a>
                 <ul class="menu-content">
                     <li class="nav-item {{ (request()->is('program-studi')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('program-studi.index')}} "><i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Program Studi</span>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Stakeholder</span>
                         </a>
                     </li>
+
                     <li class="nav-item {{ (request()->is('backend-kegiatan')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-kegiatan.index')}} "><i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Kegiatan</span>
@@ -64,6 +65,19 @@
                             </li>
                             <li class="nav-item {{ (request()->is('backend-visimisi')) ? 'active' : '' }}">
                                 <a class="d-flex align-items-center" href="{{route('backend-visimisi.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">Visi dan Misi</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">RKA</span></a>
+                        <ul class="menu-content">
+                            <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA</span></a>
+                            </li>
+                            <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Perubahan Perilaku</span></a>
+                            </li>
+                            <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Intervensi Spesifik</span></a>
                             </li>
                         </ul>
                     </li>
