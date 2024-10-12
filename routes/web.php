@@ -92,6 +92,10 @@ Route::middleware('auth')->group(function () {
 
         ///// PENGGUNA \\\\\
         Route::resources([
+             /// TPPS \\\
+            'backend-pengguna-tpps' => Backend\Pengguna\TppsController::class,
+              /// STAKEHOLDER \\\
+            'backend-pengguna-stakeholder' => Backend\Pengguna\StakeholderController::class,
             /// PENGAJAR \\\
             'backend-pengguna-pengajar' => Backend\Pengguna\PengajarController::class,
             /// STAF \\\
