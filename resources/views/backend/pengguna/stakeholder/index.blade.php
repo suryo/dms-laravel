@@ -49,7 +49,7 @@
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 {{-- <th>Mengajar</th> --}}
-                                                <th>NIP</th>
+                                                {{-- <th>NIP</th> --}}
                                                 <th>Email</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -61,8 +61,8 @@
                                                     <td></td>
                                                     <td> {{$key+1}} </td>
                                                     <td> {{$stakeholders->name}} </td>
-                                                    <td> {{$stakeholders->userDetail->mengajar}} </td>
-                                                    <td> {{$stakeholders->userDetail->nip}} </td>
+                                                    {{-- <td> {{$stakeholders->userDetail->mengajar}} </td> --}}
+                                                    {{-- <td> {{$stakeholders->userDetail->nip}} </td> --}}
                                                     <td> {{$stakeholders->email}} </td>
                                                     <td> {{$stakeholders->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                     <td><a href=" {{route('backend-pengguna-stakeholder.edit', $stakeholders->id)}} " class="btn btn-success btn-sm">Edit</a></td>

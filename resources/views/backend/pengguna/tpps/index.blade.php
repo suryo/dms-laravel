@@ -49,7 +49,7 @@
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 {{-- <th>Mengajar</th> --}}
-                                                <th>NIP</th>
+                                                {{-- <th>NIP</th> --}}
                                                 <th>Email</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -62,7 +62,7 @@
                                                     <td> {{$key+1}} </td>
                                                     <td> {{$tppss->name}} </td>
                                                     {{-- <td> {{$tppss->userDetail->mengajar}} </td> --}}
-                                                    <td> {{$tppss->userDetail->nip}} </td>
+                                                    {{-- <td> {{$tppss->userDetail->nip}} </td> --}}
                                                     <td> {{$tppss->email}} </td>
                                                     <td> {{$tppss->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                     <td><a href=" {{route('backend-pengguna-tpps.edit', $tppss->id)}} " class="btn btn-success btn-sm">Edit</a></td>

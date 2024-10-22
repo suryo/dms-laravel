@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Perpustakaan\Entities\Book;
 use Modules\Perpustakaan\Entities\Borrowing;
 use Modules\Perpustakaan\Entities\Member;
+use App\Models\DataRka;
 
 class HomeController extends Controller
 {
@@ -46,9 +47,17 @@ class HomeController extends Controller
               $borrow = Borrowing::whereNull('lateness')->count();
               $member = Member::where('is_active',0)->count();
 
-              return view('backend.website.home', compact('guru','murid','alumni','event','acara','book','borrow','member'));
+              $rkas = DataRka::all()->count();
+
+              return view('backend.website.home', compact('guru','murid','alumni','event','acara','book','borrow','member','rkas'));
 
 
+            }
+            elseif ($role == 'tpps') {
+
+              $event = Events::where('is_active','0')->first();
+
+              return view('backend.website.home', compact('event'));
             }
             // DASHBOARD MURID \\
             elseif ($role == 'Murid') {

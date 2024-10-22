@@ -20,7 +20,7 @@ class StakeholderController extends Controller
      */
     public function index()
     {
-        $stakeholder = User::with('userDetail')->where('role','Stakeholder')->get();
+        $stakeholder = User::with('userDetail')->where('role','stakeholder')->get();
         return view('backend.pengguna.stakeholder.index', compact('stakeholder'));
     }
 
@@ -59,7 +59,7 @@ class StakeholderController extends Controller
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->username         = strtolower($username).date("s");
-            $user->role             = 'Stakeholder';
+            $user->role             = 'stakeholder';
             $user->status           = 'Aktif';
             $user->foto_profile     = $nama_img;
             $user->password         = bcrypt('12345678');
@@ -83,7 +83,7 @@ class StakeholderController extends Controller
 
             $user->assignRole($user->role);
             DB::commit();
-            Session::flash('success','Pengajar Berhasil ditambah !');
+            Session::flash('success','Stakeholder Berhasil ditambah !');
             return redirect()->route('backend-pengguna-stakeholder.index');
 
         } catch (ErrorException $e) {
@@ -161,7 +161,7 @@ class StakeholderController extends Controller
             }
 
             DB::commit();
-            Session::flash('success','Pengajar Berhasil diubah !');
+            Session::flash('success','Stakeholder Berhasil diubah !');
             return redirect()->route('backend-pengguna-stakeholder.index');
 
         } catch (ErrorException $e) {

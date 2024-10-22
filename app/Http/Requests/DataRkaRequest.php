@@ -26,8 +26,8 @@ class DataRkaRequest extends FormRequest
         return [
             'desc'      => ['required'],
             'title'     => ['required'],
-            'image'     => ['required'],
-            'urutan'    => ['required','unique:image_sliders']
+            'document_rka'     => ['required'],
+            // 'urutan'    => ['required','unique:image_sliders']
         ];
     }
 
@@ -36,9 +36,9 @@ class DataRkaRequest extends FormRequest
         return [
             'desc.required'      => 'Deskripsi tidak boleh kosong.',
             'title.required'     => 'Title tidak boleh kosong.',
-            'image.required'     => 'Gambar Slider tidak boleh kosong.',
-            'urutan.required'    => 'Urutan Gambar tidak boleh kosong.',
-            'urutan.unique'      => 'Urutan Gambar sudah digunakan.'
+            'document_rka.required'     => 'Document tidak boleh kosong.',
+            // 'urutan.required'    => 'Urutan Gambar tidak boleh kosong.',
+            // 'urutan.unique'      => 'Urutan Gambar sudah digunakan.'
         ];
     }
 }

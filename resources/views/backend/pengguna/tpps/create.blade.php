@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-   Tambah Pengajar
+   Tambah TPPS
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Pengajar</h2>
+                    <h2> TPPS</h2>
                 </div>
             </div>
         </div>
@@ -36,10 +36,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header header-bottom">
-                        <h4>Tambah Pengajar</h4>
+                        <h4>Tambah TPPS</h4>
                     </div>
                     <div class="card-body">
-                        <form action=" {{route('backend-pengguna-pengajar.store')}} " method="post" enctype="multipart/form-data">
+                        <form action=" {{route('backend-pengguna-tpps.store')}} " method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-6">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-6 d-none">
                                     <div class="form-group">
                                         <label for="basicInput">Mengajar</label> <span class="text-danger">*</span>
                                         <select name="mengajar" class="form-control @error('mengajar') is-invalid @enderror">
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-6 d-none">
                                     <div class="form-group">
                                         <label for="basicInput">NIP</label> <span class="text-danger">*</span>
                                         <input type="number" class="form-control @error('nip') is-invalid @enderror" name="nip" value=" {{old('nip')}} " placeholder="NIP" />
@@ -179,7 +179,7 @@
                               
                             </div>
                             <button class="btn btn-primary" type="submit">Tambah</button>
-                            <a href="{{route('backend-pengguna-pengajar.index')}}" class="btn btn-warning">Batal</a>
+                            <a href="{{route('backend-pengguna-tpps.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>
                 </div>

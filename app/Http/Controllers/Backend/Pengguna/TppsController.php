@@ -20,7 +20,8 @@ class TppsController extends Controller
      */
     public function index()
     {
-        $tpps = User::with('userDetail')->where('role','TPPS')->get();
+        
+        $tpps = User::with('userDetail')->where('role','tpps')->get();
         return view('backend.pengguna.tpps.index', compact('tpps'));
     }
 
@@ -59,7 +60,7 @@ class TppsController extends Controller
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->username         = strtolower($username).date("s");
-            $user->role             = 'Guru';
+            $user->role             = 'tpps';
             $user->status           = 'Aktif';
             $user->foto_profile     = $nama_img;
             $user->password         = bcrypt('12345678');
@@ -83,7 +84,7 @@ class TppsController extends Controller
 
             $user->assignRole($user->role);
             DB::commit();
-            Session::flash('success','Pengajar Berhasil ditambah !');
+            Session::flash('success','Tpps Berhasil ditambah !');
             return redirect()->route('backend-pengguna-tpps.index');
 
         } catch (ErrorException $e) {
@@ -161,7 +162,7 @@ class TppsController extends Controller
             }
 
             DB::commit();
-            Session::flash('success','Pengajar Berhasil diubah !');
+            Session::flash('success','Tpps Berhasil diubah !');
             return redirect()->route('backend-pengguna-tpps.index');
 
         } catch (ErrorException $e) {

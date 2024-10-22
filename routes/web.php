@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// Route::get('backend-datarka-tpps',[App\Http\Controllers\Backend\Website\DataRkaController::class,'index'])->name('backend.datarka.tpps');
+Route::resources([
+  'backend-datarka' => Backend\Website\DataRkaController::class
+]);
 // ======= FRONTEND ======= \\
 
 Route::get('/','Frontend\IndexController@index');
@@ -78,7 +82,7 @@ Route::middleware('auth')->group(function () {
             /// IMAGE SLIDER \\\
             'backend-imageslider' => Backend\Website\ImageSliderController::class,
             /// IMAGE SLIDER \\\
-            'backend-datarka' => Backend\Website\DataRkaController::class,
+            // 'backend-datarka' => Backend\Website\DataRkaController::class,
             /// ABOUT \\\
             'backend-about' => Backend\Website\AboutController::class,
             /// VIDEO \\\
@@ -111,6 +115,10 @@ Route::middleware('auth')->group(function () {
             'backend-pengguna-perpus' => Backend\Pengguna\PerpusController::class,
             /// BENDAHARA \\\
             'backend-pengguna-bendahara'  => Backend\Pengguna\BendaharaController::class
-        ]);
+        
+          ]);
     });
+
+    
+    
 });

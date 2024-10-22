@@ -73,14 +73,20 @@
                             <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
                                 <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA</span></a>
                             </li>
-                            <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Perubahan Perilaku</span></a>
+                            <li class="nav-item {{ (request()->is('backend-datarka?jenis=Program Perubahan Perilaku')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}?jenis=Program Perubahan Perilaku"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Perubahan Perilaku</span></a>
                             </li>
-                            <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Intervensi Spesifik</span></a>
+                            <li class="nav-item {{ (request()->is('backend-datarka?jenis=Program Intervensi Spesifik')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}?jenis=Program Intervensi Spesifik"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Intervensi Spesifik</span></a>
                             </li>
                         </ul>
                     </li>
+
+
+
+                   
+
+
                 </ul>
             </li>
             <li class=" nav-item">
@@ -188,6 +194,29 @@
                 </ul>
             </li>
 
+            @elseif(Auth::user()->role == 'tpps')
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather="database"></i>
+                    <span class="menu-title text-truncate" data-i18n="Data Sekolah">Data</span>
+                </a>
+                <ul class="menu-content">
+                                     
+                
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">RKA</span></a>
+                        <ul class="menu-content">
+                            <li class="nav-item {{ (request()->is('backend-datarka')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}"><span class="menu-item text-truncate" data-i18n="Third Level">RKA</span></a>
+                            </li>
+                            <li class="nav-item {{ (request()->is('backend-datarka?jenis=Program Perubahan Perilaku')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}?jenis=Program Perubahan Perilaku"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Perubahan Perilaku</span></a>
+                            </li>
+                            <li class="nav-item {{ (request()->is('backend-datarka?jenis=Program Intervensi Spesifik')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-datarka.index')}}?jenis=Program Intervensi Spesifik"><span class="menu-item text-truncate" data-i18n="Third Level">RKA Program Intervensi Spesifik</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             {{-- MENU GURU --}}
             @elseif(Auth::user()->role == 'Guru')
             <li class=" nav-item">

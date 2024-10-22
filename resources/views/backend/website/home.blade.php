@@ -69,8 +69,8 @@
                     <div class="card">
                         <div class="card-header">
                             <div>
-                                <h2 class="font-weight-bolder mb-0">{{$murid}}</h2>
-                                <p class="card-text">Murid</p>
+                                <h2 class="font-weight-bolder mb-0">{{$rkas}}</h2>
+                                <p class="card-text">Document</p>
                             </div>
                             <div class="avatar bg-light-warning p-50 m-0">
                                 <div class="avatar-content">
@@ -99,7 +99,7 @@
                 </div>
             @endif
 
-            <div class="col-lg-4 col-md-6 col-12">
+            <div class="col-lg-12 col-md-6 col-12">
                 <div class="card card-developer-meetup">
                     <div class="meetup-img-wrapper rounded-top text-center">
                         <img src="{{asset('Assets/Backend/images/illustration/email.svg')}}" alt="Meeting Pic" height="170" />
@@ -143,7 +143,7 @@
             </div>
 
             @if (Auth::user()->role == 'Admin')
-                <div class="col-xl-8 col-md-6 col-12">
+                <div class="col-xl-8 col-md-6 col-12 d-none">
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-statistics">
