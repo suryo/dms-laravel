@@ -23,14 +23,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `abouts`;
 CREATE TABLE `abouts`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `title` varchar(255)  NOT NULL,
+  `desc` varchar(255)  NOT NULL,
+  `image` varchar(255)  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of abouts
@@ -42,12 +42,12 @@ CREATE TABLE `abouts`  (
 DROP TABLE IF EXISTS `authors`;
 CREATE TABLE `authors`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `authors_name_unique`(`name` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of authors
@@ -61,8 +61,8 @@ CREATE TABLE `bank_accounts`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` bigint UNSIGNED NOT NULL,
   `account_number` bigint UNSIGNED NOT NULL,
-  `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bank_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `account_name` varchar(255)  NOT NULL,
+  `bank_name` varchar(255)  NOT NULL,
   `is_primary` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `bank_accounts`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `bank_accounts_user_id_foreign`(`user_id` ASC) USING BTREE,
   CONSTRAINT `bank_accounts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of bank_accounts
@@ -82,10 +82,10 @@ CREATE TABLE `bank_accounts`  (
 DROP TABLE IF EXISTS `banks`;
 CREATE TABLE `banks`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `sandi_bank` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_bank` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sandi_bank` varchar(20)  NOT NULL,
+  `nama_bank` varchar(255)  NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 146 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 146 ;
 
 -- ----------------------------
 -- Records of banks
@@ -243,18 +243,18 @@ INSERT INTO `banks` VALUES (146, '688', 'BPR KS (KARYAJATNIKA SEDAYA)');
 DROP TABLE IF EXISTS `beritas`;
 CREATE TABLE `beritas`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255)  NOT NULL,
+  `slug` varchar(255)  NOT NULL,
+  `content` text  NOT NULL,
   `kategori_id` int NOT NULL,
-  `thumbnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `thumbnail` varchar(255)  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_by` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `beritas_title_unique`(`title` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 ;
 
 -- ----------------------------
 -- Records of beritas
@@ -273,18 +273,18 @@ DROP TABLE IF EXISTS `berkas_murids`;
 CREATE TABLE `berkas_murids`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` bigint NOT NULL,
-  `kartu_keluarga` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `akte_kelahiran` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `surat_kelakuan_baik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `surat_sehat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `surat_tidak_buta_warna` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `rapor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `ijazah` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `kartu_keluarga` varchar(255)  NULL DEFAULT NULL,
+  `akte_kelahiran` varchar(255)  NULL DEFAULT NULL,
+  `surat_kelakuan_baik` varchar(255)  NULL DEFAULT NULL,
+  `surat_sehat` varchar(255)  NULL DEFAULT NULL,
+  `surat_tidak_buta_warna` varchar(255)  NULL DEFAULT NULL,
+  `rapor` varchar(255)  NULL DEFAULT NULL,
+  `foto` varchar(255)  NULL DEFAULT NULL,
+  `ijazah` varchar(255)  NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of berkas_murids
@@ -296,15 +296,15 @@ CREATE TABLE `berkas_murids`  (
 DROP TABLE IF EXISTS `bk_siswa`;
 CREATE TABLE `bk_siswa`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nama_siswa` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `kelas` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `nama_siswa` varchar(255)  NULL DEFAULT NULL,
+  `kelas` varchar(255)  NULL DEFAULT NULL,
   `bk_siswa_id` bigint UNSIGNED NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `bk_siswa_bk_siswa_id_foreign`(`bk_siswa_id` ASC) USING BTREE,
   CONSTRAINT `bk_siswa_ibfk_1` FOREIGN KEY (`bk_siswa_id`) REFERENCES `format_bk` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 ;
 
 -- ----------------------------
 -- Records of bk_siswa
@@ -320,22 +320,22 @@ INSERT INTO `bk_siswa` VALUES (4, 'bambang', '', 6, '2024-10-01 15:43:33', '2024
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `book_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `book_code` varchar(255)  NOT NULL,
+  `name` varchar(255)  NOT NULL,
+  `description` longtext  NOT NULL,
+  `thumbnail` varchar(255)  NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
   `author_id` bigint UNSIGNED NOT NULL,
   `publisher_id` bigint UNSIGNED NOT NULL,
   `publication_year` year NOT NULL,
-  `isbn` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isbn` varchar(50)  NOT NULL,
   `stock` int NOT NULL,
   `is_available` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `books_book_code_unique`(`book_code` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of books
@@ -347,7 +347,7 @@ CREATE TABLE `books`  (
 DROP TABLE IF EXISTS `borrowings`;
 CREATE TABLE `borrowings`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `borrow_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `borrow_code` varchar(255)  NOT NULL,
   `member_id` bigint UNSIGNED NOT NULL,
   `book_id` bigint UNSIGNED NOT NULL,
   `borrow_date` date NOT NULL,
@@ -357,7 +357,7 @@ CREATE TABLE `borrowings`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `borrowings_borrow_code_unique`(`borrow_code` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of borrowings
@@ -369,12 +369,12 @@ CREATE TABLE `borrowings`  (
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `categories_name_unique`(`name` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of categories
@@ -387,14 +387,14 @@ DROP TABLE IF EXISTS `data_jurusans`;
 CREATE TABLE `data_jurusans`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `jurusan_id` bigint UNSIGNED NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255)  NOT NULL,
+  `content` text  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `data_jurusans_jurusan_id_foreign`(`jurusan_id` ASC) USING BTREE,
   CONSTRAINT `data_jurusans_ibfk_1` FOREIGN KEY (`jurusan_id`) REFERENCES `jurusans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of data_jurusans
@@ -406,14 +406,14 @@ CREATE TABLE `data_jurusans`  (
 DROP TABLE IF EXISTS `data_kelas`;
 CREATE TABLE `data_kelas`  (
   `id` int NOT NULL,
-  `kelas` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `periode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `deleted` enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `kelas` varchar(255)  NULL DEFAULT NULL,
+  `periode` varchar(255)  NULL DEFAULT NULL,
+  `status` varchar(255)  NULL DEFAULT NULL,
+  `deleted` enum('true','false')  NULL DEFAULT NULL,
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB;
 
 -- ----------------------------
 -- Records of data_kelas
@@ -425,13 +425,13 @@ CREATE TABLE `data_kelas`  (
 DROP TABLE IF EXISTS `data_kelompokbelajar`;
 CREATE TABLE `data_kelompokbelajar`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `kelompokbelajar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'active',
-  `deleted` enum('false','true') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'false',
+  `kelompokbelajar` varchar(255)  NULL DEFAULT NULL,
+  `status` enum('active','inactive')  NULL DEFAULT 'active',
+  `deleted` enum('false','true')  NULL DEFAULT 'false',
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2;
 
 -- ----------------------------
 -- Records of data_kelompokbelajar
@@ -448,20 +448,20 @@ CREATE TABLE `data_murids`  (
   `user_id` bigint NOT NULL,
   `nis` bigint NULL DEFAULT NULL,
   `nisn` bigint NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `nama_panggilan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `tempat_lahir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `name` varchar(255)  NULL DEFAULT NULL,
+  `nama_panggilan` varchar(255)  NULL DEFAULT NULL,
+  `tempat_lahir` varchar(255)  NULL DEFAULT NULL,
   `tgl_lahir` date NULL DEFAULT NULL,
-  `agama` enum('Islam','Kristen Katolik','Kristen Protestan','Hindu','Budha','Konghucu') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `whatsapp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `alamat` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `asal_sekolah` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `proses` enum('Pendaftaran','Berkas','Murid','Ditolak') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pendaftaran',
+  `agama` enum('Islam','Kristen Katolik','Kristen Protestan','Hindu','Budha','Konghucu')  NULL DEFAULT NULL,
+  `telp` varchar(255)  NULL DEFAULT NULL,
+  `whatsapp` varchar(255)  NULL DEFAULT NULL,
+  `alamat` text  NULL,
+  `asal_sekolah` varchar(255)  NULL DEFAULT NULL,
+  `proses` enum('Pendaftaran','Berkas','Murid','Ditolak')  NOT NULL DEFAULT 'Pendaftaran',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 ;
 
 -- ----------------------------
 -- Records of data_murids
@@ -476,20 +476,20 @@ DROP TABLE IF EXISTS `data_orang_tuas`;
 CREATE TABLE `data_orang_tuas`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` bigint NOT NULL,
-  `nama_ayah` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `pendidikan_ayah` enum('SD','SMP','SMA/SMK','S1','S2','S3') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `telp_ayah` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `pekerjaan_ayah` enum('Wiraswasta','Wirausaha','ASN','Buruh') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `alamat_ayah` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `nama_ibu` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `pendidikan_ibu` enum('SD','SMP','SMA/SMK','S1','S2','S3') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `telp_ibu` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `pekerjaan_ibu` enum('Ibu Rumah Tangga','Wiraswasta','Wirausaha','ASN','Buruh') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `alamat_ibu` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `nama_ayah` varchar(255)  NULL DEFAULT NULL,
+  `pendidikan_ayah` enum('SD','SMP','SMA/SMK','S1','S2','S3')  NULL DEFAULT NULL,
+  `telp_ayah` varchar(255)  NULL DEFAULT NULL,
+  `pekerjaan_ayah` enum('Wiraswasta','Wirausaha','ASN','Buruh')  NULL DEFAULT NULL,
+  `alamat_ayah` varchar(255)  NULL DEFAULT NULL,
+  `nama_ibu` varchar(255)  NULL DEFAULT NULL,
+  `pendidikan_ibu` enum('SD','SMP','SMA/SMK','S1','S2','S3')  NULL DEFAULT NULL,
+  `telp_ibu` varchar(255)  NULL DEFAULT NULL,
+  `pekerjaan_ibu` enum('Ibu Rumah Tangga','Wiraswasta','Wirausaha','ASN','Buruh')  NULL DEFAULT NULL,
+  `alamat_ibu` varchar(255)  NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of data_orang_tuas
@@ -502,17 +502,17 @@ DROP TABLE IF EXISTS `data_rkas`;
 CREATE TABLE `data_rkas`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int NULL DEFAULT NULL,
-  `document_rka` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `jenis` enum('Program Perubahan Perilaku','Program Intervensi Spesifik') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'Program Perubahan Perilaku',
+  `document_rka` varchar(255)  NOT NULL,
+  `title` varchar(255)  NULL DEFAULT NULL,
+  `desc` varchar(255)  NULL DEFAULT NULL,
+  `jenis` enum('Program Perubahan Perilaku','Program Intervensi Spesifik')  NULL DEFAULT 'Program Perubahan Perilaku',
   `urutan` int NOT NULL,
-  `status` enum('Awaiting Processing','Under Review','Reject','Revisions','Approval') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'Awaiting Processing',
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `status` enum('Awaiting Processing','Under Review','Reject','Revisions','Approval')  NULL DEFAULT 'Awaiting Processing',
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of data_rkas
@@ -529,13 +529,13 @@ INSERT INTO `data_rkas` VALUES (5, 10, '1728708517_2015 Singapore Salary Guide.p
 DROP TABLE IF EXISTS `data_semester`;
 CREATE TABLE `data_semester`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `semester` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'active',
-  `deleted` enum('false','true') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'false',
+  `semester` varchar(255)  NULL DEFAULT NULL,
+  `status` enum('active','inactive')  NULL DEFAULT 'active',
+  `deleted` enum('false','true')  NULL DEFAULT 'false',
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2;
 
 -- ----------------------------
 -- Records of data_semester
@@ -549,13 +549,13 @@ INSERT INTO `data_semester` VALUES (2, 'Genap', 'active', 'false', NULL, NULL);
 DROP TABLE IF EXISTS `data_tahunajaran`;
 CREATE TABLE `data_tahunajaran`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tahunajaran` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'active',
-  `deleted` enum('false','true') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'false',
+  `tahunajaran` varchar(255)  NULL DEFAULT NULL,
+  `status` enum('active','inactive')  NULL DEFAULT 'active',
+  `deleted` enum('false','true')  NULL DEFAULT 'false',
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3;
 
 -- ----------------------------
 -- Records of data_tahunajaran
@@ -572,13 +572,13 @@ CREATE TABLE `detail_payment_spps`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `payment_id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
-  `sender` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `bank_sender` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `destination_bank` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `month` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sender` varchar(255)  NULL DEFAULT NULL,
+  `bank_sender` varchar(255)  NULL DEFAULT NULL,
+  `destination_bank` varchar(255)  NULL DEFAULT NULL,
+  `month` varchar(255)  NOT NULL,
   `amount` bigint NOT NULL,
-  `status` enum('paid','unpaid') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `status` enum('paid','unpaid')  NOT NULL,
+  `file` varchar(255)  NULL DEFAULT NULL,
   `date_file` date NULL DEFAULT NULL,
   `approve_by` bigint UNSIGNED NULL DEFAULT NULL,
   `approve_date` date NULL DEFAULT NULL,
@@ -589,7 +589,7 @@ CREATE TABLE `detail_payment_spps`  (
   INDEX `detail_payment_spps_payment_id_foreign`(`payment_id` ASC) USING BTREE,
   CONSTRAINT `detail_payment_spps_ibfk_1` FOREIGN KEY (`payment_id`) REFERENCES `payment_spps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detail_payment_spps_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of detail_payment_spps
@@ -601,19 +601,19 @@ CREATE TABLE `detail_payment_spps`  (
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `thumbnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255)  NOT NULL,
+  `desc` text  NOT NULL,
+  `slug` varchar(255)  NOT NULL,
+  `content` varchar(255)  NOT NULL,
+  `thumbnail` varchar(255)  NOT NULL,
   `acara` datetime NOT NULL,
-  `lokasi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `lokasi` varchar(255)  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `events_title_unique`(`title` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 ;
 
 -- ----------------------------
 -- Records of events
@@ -631,15 +631,15 @@ INSERT INTO `events` VALUES (6, 'Hari Stroke Sedunia', 'Hari Stroke Sedunia', 'H
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255)  NOT NULL,
+  `connection` text  NOT NULL,
+  `queue` text  NOT NULL,
+  `payload` longtext  NOT NULL,
+  `exception` longtext  NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `failed_jobs_uuid_unique`(`uuid` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of failed_jobs
@@ -651,19 +651,19 @@ CREATE TABLE `failed_jobs`  (
 DROP TABLE IF EXISTS `footers`;
 CREATE TABLE `footers`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `whatsapp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facebook` varchar(255)  NOT NULL,
+  `instagram` varchar(255)  NOT NULL,
+  `twitter` varchar(255)  NOT NULL,
+  `youtube` varchar(255)  NOT NULL,
+  `logo` varchar(255)  NOT NULL,
+  `telp` varchar(255)  NOT NULL,
+  `whatsapp` varchar(255)  NOT NULL,
+  `email` varchar(255)  NOT NULL,
+  `desc` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of footers
@@ -675,13 +675,13 @@ CREATE TABLE `footers`  (
 DROP TABLE IF EXISTS `format_bk`;
 CREATE TABLE `format_bk`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nomor_bk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `judul_bk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `pokok_pembahasan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `judul_tanggapan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `tanggapan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `status` enum('Sudah Ditanggapi','Belum Ditanggapi') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis` enum('Konseling Pribadi','Konseling Kelompok','Bimbingan Konseling Karir','Bimbingan Konseling Kelompok') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomor_bk` varchar(255)  NULL DEFAULT NULL,
+  `judul_bk` varchar(255)  NULL DEFAULT NULL,
+  `pokok_pembahasan` text  NULL,
+  `judul_tanggapan` varchar(255)  NULL DEFAULT NULL,
+  `tanggapan` text  NULL,
+  `status` enum('Sudah Ditanggapi','Belum Ditanggapi')  NOT NULL,
+  `jenis` enum('Konseling Pribadi','Konseling Kelompok','Bimbingan Konseling Karir','Bimbingan Konseling Kelompok')  NOT NULL,
   `tanggapan_guru_id` bigint UNSIGNED NULL DEFAULT NULL,
   `dibuat_oleh_id` bigint UNSIGNED NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -691,7 +691,7 @@ CREATE TABLE `format_bk`  (
   INDEX `format_bk_dibuat_oleh_id_foreign`(`dibuat_oleh_id` ASC) USING BTREE,
   CONSTRAINT `format_bk_ibfk_1` FOREIGN KEY (`dibuat_oleh_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `format_bk_ibfk_2` FOREIGN KEY (`tanggapan_guru_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 ;
 
 -- ----------------------------
 -- Records of format_bk
@@ -709,15 +709,15 @@ INSERT INTO `format_bk` VALUES (6, 'BK/241001/PRIBADI/ZWWS', 'tanyak tentang ker
 DROP TABLE IF EXISTS `image_sliders`;
 CREATE TABLE `image_sliders`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `image` varchar(255)  NOT NULL,
+  `title` varchar(255)  NULL DEFAULT NULL,
+  `desc` varchar(255)  NULL DEFAULT NULL,
   `urutan` int NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 ;
 
 -- ----------------------------
 -- Records of image_sliders
@@ -731,15 +731,15 @@ INSERT INTO `image_sliders` VALUES (2, '1727592280_2_new.jpg', NULL, NULL, 1, '0
 DROP TABLE IF EXISTS `image_sliders_copy1`;
 CREATE TABLE `image_sliders_copy1`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `image` varchar(255)  NOT NULL,
+  `title` varchar(255)  NULL DEFAULT NULL,
+  `desc` varchar(255)  NULL DEFAULT NULL,
   `urutan` int NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 ;
 
 -- ----------------------------
 -- Records of image_sliders_copy1
@@ -753,17 +753,17 @@ INSERT INTO `image_sliders_copy1` VALUES (2, '1727592280_2_new.jpg', NULL, NULL,
 DROP TABLE IF EXISTS `jurusans`;
 CREATE TABLE `jurusans`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `singkatan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `nama` varchar(255)  NOT NULL,
+  `singkatan` varchar(255)  NULL DEFAULT NULL,
+  `slug` varchar(255)  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `jurusans_nama_unique`(`nama` ASC) USING BTREE,
   UNIQUE INDEX `jurusans_slug_unique`(`slug` ASC) USING BTREE,
   UNIQUE INDEX `jurusans_singkatan_unique`(`singkatan` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of jurusans
@@ -775,13 +775,13 @@ CREATE TABLE `jurusans`  (
 DROP TABLE IF EXISTS `kategori_beritas`;
 CREATE TABLE `kategori_beritas`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `nama` varchar(255)  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `kategori_beritas_nama_unique`(`nama` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 ;
 
 -- ----------------------------
 -- Records of kategori_beritas
@@ -796,17 +796,17 @@ INSERT INTO `kategori_beritas` VALUES (3, 'Stunting', '0', '2024-09-28 12:01:58'
 DROP TABLE IF EXISTS `kegiatans`;
 CREATE TABLE `kegiatans`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `imagas` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `nama` varchar(255)  NOT NULL,
+  `slug` varchar(255)  NOT NULL,
+  `image` varchar(255)  NULL DEFAULT NULL,
+  `imagas` varchar(255)  NULL DEFAULT NULL,
+  `content` text  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `kegiatans_nama_unique`(`nama` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 ;
 
 -- ----------------------------
 -- Records of kegiatans
@@ -820,25 +820,25 @@ DROP TABLE IF EXISTS `laporan_akademik`;
 CREATE TABLE `laporan_akademik`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_murid` int NOT NULL,
-  `id_guru` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `id_kelompokbelajar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `id_semester` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `id_tahunajaran` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `moral` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `fisik_motorik` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `kognitif` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `bahasa` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `sosial_emosional` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `seni` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `rekomendasi_orangtua` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `id_guru` varchar(255)  NULL DEFAULT NULL,
+  `id_kelompokbelajar` varchar(255)  NULL DEFAULT NULL,
+  `id_semester` varchar(255)  NULL DEFAULT NULL,
+  `id_tahunajaran` varchar(255)  NULL DEFAULT NULL,
+  `file` varchar(255)  NOT NULL,
+  `title` varchar(255)  NULL DEFAULT NULL,
+  `desc` text  NULL,
+  `moral` text  NULL,
+  `fisik_motorik` text  NULL,
+  `kognitif` text  NULL,
+  `bahasa` text  NULL,
+  `sosial_emosional` text  NULL,
+  `seni` text  NULL,
+  `rekomendasi_orangtua` text  NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 ;
 
 -- ----------------------------
 -- Records of laporan_akademik
@@ -852,16 +852,16 @@ INSERT INTO `laporan_akademik` VALUES (17, 2, '7', '1', '1', '3', '1728088361_PR
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE `members`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `member_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `member_code` varchar(255)  NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255)  NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `members_member_code_unique`(`member_code` ASC) USING BTREE,
   UNIQUE INDEX `members_user_id_unique`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of members
@@ -873,10 +873,10 @@ CREATE TABLE `members`  (
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255)  NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 45 ;
 
 -- ----------------------------
 -- Records of migrations
@@ -933,12 +933,12 @@ INSERT INTO `migrations` VALUES (45, '2024_09_30_090212_create_tabel_bk_siswa', 
 DROP TABLE IF EXISTS `model_has_permissions`;
 CREATE TABLE `model_has_permissions`  (
   `permission_id` bigint UNSIGNED NOT NULL,
-  `model_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_type` varchar(255)  NOT NULL,
   `model_id` bigint UNSIGNED NOT NULL,
   PRIMARY KEY (`permission_id`, `model_id`, `model_type`) USING BTREE,
   INDEX `model_has_permissions_model_id_model_type_index`(`model_id` ASC, `model_type` ASC) USING BTREE,
   CONSTRAINT `model_has_permissions_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of model_has_permissions
@@ -950,12 +950,12 @@ CREATE TABLE `model_has_permissions`  (
 DROP TABLE IF EXISTS `model_has_roles`;
 CREATE TABLE `model_has_roles`  (
   `role_id` bigint UNSIGNED NOT NULL,
-  `model_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_type` varchar(255)  NOT NULL,
   `model_id` bigint UNSIGNED NOT NULL,
   PRIMARY KEY (`role_id`, `model_id`, `model_type`) USING BTREE,
   INDEX `model_has_roles_model_id_model_type_index`(`model_id` ASC, `model_type` ASC) USING BTREE,
   CONSTRAINT `model_has_roles_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of model_has_roles
@@ -977,11 +977,11 @@ INSERT INTO `model_has_roles` VALUES (12, 'App\\Models\\User', 14);
 -- ----------------------------
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets`  (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255)  NOT NULL,
+  `token` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of password_resets
@@ -996,24 +996,24 @@ CREATE TABLE `payment_spps`  (
   `user_id` bigint UNSIGNED NOT NULL,
   `year` bigint NOT NULL,
   `is_active` tinyint(1) NOT NULL,
-  `January` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `February` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `March` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `April` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `May` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `June` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `July` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `August` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `September` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `October` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `November` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
-  `December` enum('paid','unpaid','free') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unpaid',
+  `January` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `February` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `March` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `April` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `May` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `June` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `July` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `August` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `September` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `October` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `November` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
+  `December` enum('paid','unpaid','free')  NOT NULL DEFAULT 'unpaid',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `payment_spps_user_id_foreign`(`user_id` ASC) USING BTREE,
   CONSTRAINT `payment_spps_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of payment_spps
@@ -1025,13 +1025,13 @@ CREATE TABLE `payment_spps`  (
 DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255)  NOT NULL,
+  `guard_name` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `permissions_name_guard_name_unique`(`name` ASC, `guard_name` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of permissions
@@ -1043,18 +1043,18 @@ CREATE TABLE `permissions`  (
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255)  NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `name` varchar(255)  NOT NULL,
+  `token` varchar(64)  NOT NULL,
+  `abilities` text  NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `personal_access_tokens_token_unique`(`token` ASC) USING BTREE,
   INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type` ASC, `tokenable_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of personal_access_tokens
@@ -1066,13 +1066,13 @@ CREATE TABLE `personal_access_tokens`  (
 DROP TABLE IF EXISTS `photos`;
 CREATE TABLE `photos`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255)  NOT NULL,
+  `description` text  NULL,
+  `image` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 ;
 
 -- ----------------------------
 -- Records of photos
@@ -1092,13 +1092,13 @@ INSERT INTO `photos` VALUES (8, '8', '8', '8.jpg', NULL, NULL);
 DROP TABLE IF EXISTS `pilar_program`;
 CREATE TABLE `pilar_program`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255)  NOT NULL,
+  `content` text  NOT NULL,
+  `image` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of pilar_program
@@ -1111,13 +1111,13 @@ INSERT INTO `pilar_program` VALUES (1, 'TIM PERCEPATAN PENURUNAN STUNTING/TPPS',
 DROP TABLE IF EXISTS `profile_sekolahs`;
 CREATE TABLE `profile_sekolahs`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255)  NOT NULL,
+  `content` text  NOT NULL,
+  `image` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of profile_sekolahs
@@ -1130,14 +1130,14 @@ INSERT INTO `profile_sekolahs` VALUES (1, 'Pilar Program', 'Pencegahan stunting 
 DROP TABLE IF EXISTS `publishers`;
 CREATE TABLE `publishers`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `name` varchar(255)  NOT NULL,
+  `address` varchar(255)  NULL DEFAULT NULL,
+  `phone` varchar(255)  NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `publishers_name_unique`(`name` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of publishers
@@ -1154,7 +1154,7 @@ CREATE TABLE `role_has_permissions`  (
   INDEX `role_has_permissions_role_id_foreign`(`role_id` ASC) USING BTREE,
   CONSTRAINT `role_has_permissions_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `role_has_permissions_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB ;
 
 -- ----------------------------
 -- Records of role_has_permissions
@@ -1166,13 +1166,13 @@ CREATE TABLE `role_has_permissions`  (
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255)  NOT NULL,
+  `guard_name` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `roles_name_guard_name_unique`(`name` ASC, `guard_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 ;
 
 -- ----------------------------
 -- Records of roles
@@ -1197,14 +1197,14 @@ DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `isEmail` tinyint(1) NOT NULL DEFAULT 0,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `email` varchar(255)  NULL DEFAULT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `settings_user_id_foreign`(`user_id` ASC) USING BTREE,
   CONSTRAINT `settings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 ;
 
 -- ----------------------------
 -- Records of settings
@@ -1224,7 +1224,7 @@ CREATE TABLE `spp_setting`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `spp_setting_update_by_foreign`(`update_by` ASC) USING BTREE,
   CONSTRAINT `spp_setting_ibfk_1` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of spp_setting
@@ -1236,21 +1236,21 @@ CREATE TABLE `spp_setting`  (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` enum('Admin','Guru','Staf','Murid','Orang Tua','Alumni','Guest','Perpustakaan','PPDB','Bendahara','tpps','stakeholder') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `status` enum('Aktif','Tidak Aktif') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto_profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `name` varchar(255)  NOT NULL,
+  `username` varchar(255)  NOT NULL,
+  `email` varchar(255)  NOT NULL,
+  `role` enum('Admin','Guru','Staf','Murid','Orang Tua','Alumni','Guest','Perpustakaan','PPDB','Bendahara','tpps','stakeholder')  NULL DEFAULT NULL,
+  `status` enum('Aktif','Tidak Aktif')  NOT NULL,
+  `foto_profile` varchar(255)  NULL DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `password` varchar(255)  NOT NULL,
+  `remember_token` varchar(100)  NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_username_unique`(`username` ASC) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 ;
 
 -- ----------------------------
 -- Records of users
@@ -1274,21 +1274,21 @@ DROP TABLE IF EXISTS `users_details`;
 CREATE TABLE `users_details`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` bigint UNSIGNED NOT NULL,
-  `role` enum('Admin','Guru','Staf','Murid','Orang Tua','Alumni','Guest','Perpustakaan','PPDB','Bendahara','tpps','stakeholder') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mengajar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `role` enum('Admin','Guru','Staf','Murid','Orang Tua','Alumni','Guest','Perpustakaan','PPDB','Bendahara','tpps','stakeholder')  NULL DEFAULT NULL,
+  `mengajar` varchar(255)  NULL DEFAULT NULL,
   `nip` bigint NULL DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `linkidln` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `email` varchar(255)  NULL DEFAULT NULL,
+  `linkidln` varchar(255)  NULL DEFAULT NULL,
+  `instagram` varchar(255)  NULL DEFAULT NULL,
+  `twitter` varchar(255)  NULL DEFAULT NULL,
+  `facebook` varchar(255)  NULL DEFAULT NULL,
+  `youtube` varchar(255)  NULL DEFAULT NULL,
+  `website` varchar(255)  NULL DEFAULT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 ;
 
 -- ----------------------------
 -- Records of users_details
@@ -1308,14 +1308,14 @@ INSERT INTO `users_details` VALUES (9, 14, 'stakeholder', NULL, NULL, 'stakehold
 DROP TABLE IF EXISTS `videos`;
 CREATE TABLE `videos`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `title` varchar(255)  NOT NULL,
+  `desc` varchar(255)  NOT NULL,
+  `url` varchar(255)  NOT NULL,
+  `is_active` enum('0','1')  NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 ;
 
 -- ----------------------------
 -- Records of videos
@@ -1328,13 +1328,13 @@ INSERT INTO `videos` VALUES (1, 'profile', 'profile', 'https://www.youtube.com/w
 DROP TABLE IF EXISTS `visimisis`;
 CREATE TABLE `visimisis`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `visi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `misi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `visi` text  NOT NULL,
+  `misi` text  NOT NULL,
+  `image` varchar(255)  NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 ;
 
 -- ----------------------------
 -- Records of visimisis
